@@ -51,9 +51,10 @@ with tab1:
     
     uploaded_file = st.file_uploader('Choose an image', type = ['jpg','jpeg','png'],)
     
-    observed_date = st.date_input('Obervation date', value = datetime.now().date())
+    india_time = datetime.now(ZoneInfo('Asia/Kolkata'))
+    observed_date = st.date_input('Obervation date', value = india_time.date())
     # This is intended to let users choose when the image was observed. The default value is the current date and time.
-    observed_time = st.time_input('Obervation time', value = datetime.now().time().replace(microsecond= 0))
+    observed_time = st.time_input('Obervation time', value = india_time.time().replace(microsecond= 0))
     observed_at =datetime.combine(observed_date, observed_time)
 
     if uploaded_file is not None:
