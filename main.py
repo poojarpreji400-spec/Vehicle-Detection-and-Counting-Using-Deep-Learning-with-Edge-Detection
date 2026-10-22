@@ -201,9 +201,8 @@ def answer_question(question, records):
         # —which is the specific hour itself (the index).
         busiest_count = int(hourly_totals.max())
         return(
-            f"The busiest recorded hour is {row['filename']}"
-            f"with {int(row['total_count'])} vehicles,"
-            f"observed at {row['observed_at']}."
+            f"The busiest recorded hour is {busiest_hour},"
+            f"with {busiest_count} vehicles recorded."
         )
  # Check which saved image has the highest count.
     if any(word in question_text for word in ['highest','busiest','most traffic', 'maximum']):
@@ -225,7 +224,7 @@ or 'vehicle count' in question_text
     "Overlapping images may include duplicate vehicles.")
     
 # Check questions about specific vehicle types.
-    vehicle_words={ "cars":"car_count", "car": "car_count", "motorcycles":"motorcycle_count", "motorcycle": "motorcycle_count", "bikes":"motorcycle_count","bike": "motorcycle_count", "buses":"bus_count", "bus": "bus_count","trucks": "truck_counts", "truck":"truck_count",}
+    vehicle_words={ "cars":"car_count", "car": "car_count", "motorcycles":"motorcycle_count", "motorcycle": "motorcycle_count", "bikes":"motorcycle_count","bike": "motorcycle_count", "buses":"bus_count", "bus": "bus_count","trucks": "truck_count", "truck":"truck_count",}
 
     for word, column in vehicle_words.items():
         if word in question_text:
