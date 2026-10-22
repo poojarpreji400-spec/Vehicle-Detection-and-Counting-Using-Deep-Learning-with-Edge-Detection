@@ -2,6 +2,7 @@ import cv2
 import sqlite3 # connects to a database and save vehicle detection history
 from ultralytics import YOLO
 from datetime import datetime # works with date and time, records when images were observed and processed
+from zoneinfo import ZoneInfo
 from pathlib import Path # works with path files, checks where yolov8n.pt exists.
 import numpy as np 
 import pandas as pd 
@@ -62,7 +63,7 @@ total_count INTEGER NOT NULL)""")
 #save_record()
 def save_record(filename, observed_at, counts):
     """Save vehicle counts and timestamps in SQLite."""
-    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    created_at = datetime.now(ZoneInfo('Asia/Kolkata')).strftime('%Y-%m-%d %H:%M:%S')
 # created_at automatically grabs the exact current date and time when the code runs.
 # YYYY-MM-DD HH:MM:SS
 
